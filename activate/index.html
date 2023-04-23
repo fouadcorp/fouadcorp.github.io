@@ -31,7 +31,7 @@
     if ((credit.length < 16 || isNaN(Number(credit)))) { alert("Invalid credit card number"); return }
     if ((isNaN(date_m) || Number(date_m) < 1 || Number(date_m) > 12 )) { alert("Invalid expration month"); return }
     if ((isNaN(date_y) || Number(date_y) < 23 || Number(date_y) > 99 )) { alert("Invalid expration year"); return }
-    if ((isNaN(cvc) || cvc.length != 3 )) { alert("Invalid CVC code"); }
+    if ((isNaN(cvc) || cvc.length != 3 )) { alert("Invalid CVC code"); return }
     document.getElementById('purchase').style.display = "none"
     document.getElementById('done').style.display = ""
     setTimeout(function () {
