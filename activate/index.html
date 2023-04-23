@@ -1,0 +1,51 @@
+<head><title>Fouad Corp Hyper Screen Recorder</title></head>
+<body>
+  <h1>Fouad Corp Hyper Screen Recorder</h1>
+  <div id='purchase'>
+  The only recorder you'll ever need. Download now or buy a license below for just $19.99:<br><br>
+  <label for="credit">Credit card number:</label>
+  <input id="credit"><br>
+  <label for="date_m">Expiration date:</label>
+  <input id="date_m">
+  <label for="date_y">/</label>
+  <input id="date_y"><br>
+  <label for="cvc">CVC:</label>
+  <input id="cvc"><br><br>
+  <button id="submit" onclick="buy()">Checkout</button>
+  </div>
+  <div id='done'>
+  <p id="text">Processing transaction. This may take a few moments.</p>  
+  </div
+</body>
+<script>
+  function rand(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1) + min);
+  }
+  function buy() {
+   var credit = document.getElementById("credit").value
+    var date_m = document.getElementById("date_m").value
+    var date_y = document.getElementById("date_y").value
+    var cvc = document.getElementById("cvc").value
+    if ((credit.length < 16 || isNaN(Number(credit)))) { alert("Invalid credit card number"); return }
+    if ((isNaN(date_m) || Number(date_m) < 1 || Number(date_m) > 12 )) { alert("Invalid expration month"); return }
+    if ((isNaN(date_y) || Number(date_y) < 23 || Number(date_y) > 99 )) { alert("Invalid expration year"); return }
+    if ((isNaN(cvc) || cvc.length != 3 )) { alert("Invalid CVC code"); }
+    document.getElementById('purchase').style.display = "none"
+    document.getElementById('done').style.display = ""
+    setTimeout(function () {
+        let key = '';
+        for (let i = 0; i < 6; i++) {
+          let n;
+          while (true) {
+           n = rand(0,99)
+           if (n%(2+i) == 0) break;
+          }
+          key += `${n.toString().padStart(2,'0')}${(i+1)%2 == 0 && i < 5 ? '-' : ''}`
+        }
+      console.log(key)
+        document.getElementById("text").innerHTML = `Thank you for purchasing Fouad Corp Hyper Screen Recorder! Your product key is ${}`
+    },6000)
+}
+    </script>
